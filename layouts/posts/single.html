@@ -95,6 +95,13 @@
         {{ partial "post/footer.html" . }}
 
         <div class="post-comment">
+            <script src="https://utteranc.es/client.js"
+                repo="realsangil/blog-comments"
+                issue-term="pathname"
+                theme="github-light"
+                crossorigin="anonymous"
+                async>
+            </script>
             {{ if ( .Params.comment | default true ) }}
             {{ partial "comments.html" . }}
             {{ end }}
