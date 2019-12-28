@@ -61,4 +61,7 @@ Disallow: /
 User-agent: ZoominfoBot
 Disallow: /
 
+User-agent: Googlebot
+Disallow: /nogooglebot/
+
 Sitemap: {{ "sitemap.xml" | absLangURL }}
