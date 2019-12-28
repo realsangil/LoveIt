@@ -3,26 +3,26 @@
     {
     "@context": "http://schema.org",
     "@type": "WebSite",
-    "url": "{{ .Site.BaseURL }}",
+    "url": {{ .Site.BaseURL }},
     {{ with .Site.Author.name }}
         "author": {
             "@type": "Person",
-            "name": "{{ . }}"
+            "name": {{ . }}
         },
     {{ end }}
     {{ with .Site.Params.description }}
-        "description": "{{ . }}",
+        "description": {{ . }},
     {{ end }}
     {{ with .Site.Params.image }}
-        "image": "{{ .url | absURL }}",
+        "image": {{ .url | absURL }},
     {{ end }}
     {{ with .Site.Params.logo }}
-        "thumbnailUrl": "{{ .url | absURL }}",
+        "thumbnailUrl": {{ .url | absURL }},
     {{ end }}
     {{ with .Site.Copyright }}
-        "license": "{{ . }}",
+        "license": {{ . }},
     {{ end }}
-    "name": "{{ .Site.Title }}"
+    "name": {{ .Site.Title }}
     }
     </script>
 {{ else if .IsPage -}}
@@ -30,50 +30,50 @@
     {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
-    "headline": "{{ .Title }}",
+    "headline": {{ .Title }},
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "{{ .Permalink }}"
+        "@id": {{ .Permalink }}
     },
     {{ if ge (.Param "lua.image.width") 696 }}
         "image": {
             "@type": "ImageObject",
-            "url": "{{ .Param "lua.image.url" | absURL }}",
+            "url": {{ .Param "lua.image.url" | absURL }},
             "width": {{ .Param "lua.image.width" }},
             "height": {{ .Param "lua.image.height" }}
         },
     {{ else if ge .Site.Params.image.width 696 }}
         "image": {
             "@type": "ImageObject",
-            "url": "{{ .Site.Params.image.url | absURL }}",
+            "url": {{ .Site.Params.image.url | absURL }},
             "width": {{ .Site.Params.image.width }},
             "height": {{ .Site.Params.image.height }}
         },
     {{ end }}
-    "genre": "{{ .Type }}",
+    "genre": {{ .Type }},
     {{ with .Params.tags }}
-        "keywords": "{{ delimit . ", " }}",
+        "keywords": {{ delimit . ", " }},
     {{ end }}
     "wordcount": {{ .WordCount }},
-    "url": "{{ .Permalink }}",
+    "url": {{ .Permalink }},
     {{ if not .PublishDate.IsZero }}
-        "datePublished": "{{ .PublishDate.Format "2006-01-02T15:04:05-07:00" | safeHTML }}",
+        "datePublished": {{ .PublishDate.Format "2006-01-02T15:04:05+09:00" | safeHTML }},
     {{ else if not .Date.IsZero }}
-        "datePublished": "{{ .Date.Format "2006-01-02T15:04:05-07:00" | safeHTML }}",
+        "datePublished": {{ .Date.Format "2006-01-02T15:04:05+09:00" | safeHTML }},
     {{ end }}
     {{ with .Lastmod }}
-        "dateModified": "{{ .Format "2006-01-02T15:04:05-07:00" | safeHTML }}",
+        "dateModified": {{ .Format "2006-01-02T15:04:05+09:00" | safeHTML }},
     {{ end }}
     {{ with .Site.Copyright }}
-        "license": "{{ . }}",
+        "license": {{ . }},
     {{ end }}
     {{ with .Site.Params.publisher }}
         "publisher": {
             "@type": "Organization",
-            "name": "{{ .name }}",
+            "name": {{ .name }},
             "logo": {
             "@type": "ImageObject",
-            "url": "{{ .logo.url | absURL }}",
+            "url": {{ .logo.url | absURL }},
             "width": {{ .logo.width }},
             "height": {{ .logo.height }}
             }
@@ -82,10 +82,10 @@
     {{ with .Site.Author.Name }}
         "author": {
             "@type": "Person",
-            "name": "{{ . }}"
+            "name": {{ . }}
         },
     {{ end }}
-    "description": "{{ .Description }}"
+    "description": {{ .Description }}
     }
     </script>
 {{ end }}
