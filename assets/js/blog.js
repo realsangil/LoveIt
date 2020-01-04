@@ -85,6 +85,7 @@ jQuery(function($) {
 
     _Blog.responsiveTable = function() {
         const tables = document.querySelectorAll('.post-content table');
+        const tables = document.querySelectorAll('.post-content table:not(.js-file-line-container)');
         for (let i = 0; i < tables.length; i++) {
             const table = tables[i];
             const wrapper = document.createElement('div');
